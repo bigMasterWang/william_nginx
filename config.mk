@@ -1,12 +1,15 @@
-#项目编译根目录，通过export将变量声明为全局的
+
+#瀹氫箟椤圭洰缂栬瘧鐨勬牴鐩綍,閫氳繃export鎶婃煇涓彉閲忓０鏄庝负鍏ㄥ眬鐨刐鍏朵粬鏂囦欢涓彲浠ョ敤]锛岃繖閲岃幏鍙栧綋鍓嶈繖涓枃浠舵墍鍦ㄧ殑璺緞浣滀负鏍圭洰褰曪紱
+#BUILD_ROOT = /mnt/hgfs/linux/nginx
 export BUILD_ROOT = $(shell pwd)
 
-#头文件的路径
+#瀹氫箟澶存枃浠剁殑璺緞鍙橀噺
 export INCLUDE_PATH = $(BUILD_ROOT)/_include
 
-#定义我们要编译的目录
+#瀹氫箟鎴戜滑瑕佺紪璇戠殑鐩綍
 BUILD_DIR = $(BUILD_ROOT)/signal/ \
-			$(BUILD_ROOT)/app/
+			$(BUILD_ROOT)/app/ 
 
-#编译时是否生成调试信息，GUN调试器可以利用该信息
+#缂栬瘧鏃舵槸鍚︾敓鎴愯皟璇曚俊鎭�侴NU璋冭瘯鍣ㄥ彲浠ュ埄鐢ㄨ淇℃伅
 export DEBUG = true
+
