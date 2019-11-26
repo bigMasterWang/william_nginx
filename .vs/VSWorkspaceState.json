@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\misc",
+    "\\net",
+    "\\proc",
+    "\\signal",
+    "\\_include"
+  ],
+  "SelectedNode": "\\common.mk",
+  "PreviewInSolutionExplorer": false
+}
