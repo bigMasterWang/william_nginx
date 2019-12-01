@@ -6,5 +6,5 @@ all:
 	done
 
 clean:
-	rm -rf app/link_obj app/dep nginx
+	rm -rf app/link_obj app/dep bin/nginx
 	rm -rf singal/*.gch app/*.gch

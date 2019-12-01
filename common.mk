@@ -1,14 +1,14 @@
 ifeq ($(DEBUG),true)
-CC = gcc -g
+CC = g++ -g
 VERSION = debug
 else
-CC = gcc
+CC = g++
 VERSION = release
 endif
 
-SRCS = $(wildcard *.c)
-OBJS = $(SRCS:.c=.o)
-DEPS = $(SRCS:.c=.d)
+SRCS = $(wildcard *.cpp)
+OBJS = $(SRCS:.cpp=.o)
+DEPS = $(SRCS:.cpp=.d)
 
 BIN:=$(addprefix $(BUILD_ROOT)/,$(BIN))
 
@@ -36,9 +36,9 @@ $(BIN):$(LINK_OBJ)
 	mv $(BUILD_ROOT)/nginx $(BIN_ROOT)/nginx
 #	gcc -o nginx /mnt/hgfs/LinuxSharedFolder/william_nginx/app/link_obj/nginx.o /mnt/hgfs/LinuxSharedFolder/william_nginx/app/link_obj/ngx_conf.o /mnt/hgfs/LinuxSharedFolder/william_nginx/app/link_obj/ngx_signal.o
 
-$(LINK_OBJ_DIR)/%.o:%.c
-	$(CC) -I$(INCLUDE_ROOT) -o $@ -c $(filter %.c,$^)
+$(LINK_OBJ_DIR)/%.o:%.cpp
+	$(CC) -I$(INCLUDE_ROOT) -o $@ -c $(filter %.cpp,$^)
 
-$(DEP_DIR)/%.d:%.c
+$(DEP_DIR)/%.d:%.cpp
 	echo -n $(LINK_OBJ_DIR)/ > $@
 	gcc -I$(INCLUDE_ROOT) -MM $^ >> $@
