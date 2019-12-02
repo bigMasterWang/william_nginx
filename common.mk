@@ -33,7 +33,7 @@ endif
 $(BIN):$(LINK_OBJ)
 	@echo "==========$(LINK_OBJ)================"
 	$(CC) -o $@ $^
-	mv $(BUILD_ROOT)/nginx $(BIN_ROOT)/nginx
+#	mv $(BUILD_ROOT)/nginx $(BIN_ROOT)/nginx
 #	gcc -o nginx /mnt/hgfs/LinuxSharedFolder/william_nginx/app/link_obj/nginx.o /mnt/hgfs/LinuxSharedFolder/william_nginx/app/link_obj/ngx_conf.o /mnt/hgfs/LinuxSharedFolder/william_nginx/app/link_obj/ngx_signal.o
 
 $(LINK_OBJ_DIR)/%.o:%.cpp

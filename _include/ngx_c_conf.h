@@ -3,7 +3,6 @@
 
 #include <vector>
 #include "ngx_global.h"
-using namespace std;
 
 /*
 这是一个单例类，用来读取配置文件的信息
@@ -22,12 +21,10 @@ public:
 	{
 		if (m_instance == NULL)
 		{
-			if (m_instance == NULL)
-			{
-				m_instance = new CConfig();
-				static CInnerToReleaseConfig releaseClass;
-			}
+			m_instance = new CConfig();
+			static CInnerToReleaseConfig releaseClass;
 		}
+		return m_instance;
 	}
 	//释放资源的内部类
 	class CInnerToReleaseConfig
@@ -46,11 +43,12 @@ public:
 public:
 	bool Load(const char* pconfName);
 	const char* getString(const char* p_itemname);
-	//int getIntDefault(const char* p_itemname, const int def);
+	int getIntDefault(const char* p_itemname, const int def);
 
 public:
 	//配置信息存储列表
-	vector<SPConf> m_ConfigItemList;
+	std::vector<SPConf> m_ConfigItemList;
+	std::vector<int> m_IntItem;
 };
 
 

@@ -14,6 +14,7 @@ CConfig* CConfig::m_instance = NULL;
 //构造函数
 CConfig::CConfig()
 {
+
 }
 
 //析构函数
@@ -44,7 +45,6 @@ bool CConfig::Load(const char* pconfName)
 		//大家要注意老师的写法，注意写法的严密性，商业代码，就是要首先确保代码的严密性
 		if (fgets(linebuf, 500, fp) == NULL) //从文件中读数据，每次读一行，一行最多不要超过500个字符 
 			continue;
-		printf("正在加载:%s\n", linebuf);
 
 		if (linebuf[0] == 0)
 			continue;
@@ -83,7 +83,8 @@ bool CConfig::Load(const char* pconfName)
 			Ltrim(p_confitem->itemContent);
 
 			printf("itemname=%s | itemcontent=%s\n", p_confitem->itemName, p_confitem->itemContent);
-			m_ConfigItemList.push_back(p_confitem);  //内存要释放，因为这里是new出来的 
+			
+			this->m_ConfigItemList.push_back(p_confitem);  //内存要释放，因为这里是new出来的 
 		} //end if
 	} //end while(!feof(fp)) 
 
@@ -104,13 +105,13 @@ const char* CConfig::getString(const char* p_itemname)
 }
 
 //根据ItemName获取数字类型配置信息，不修改不用互斥
-//int CConfig::(const char* p_itemname, const int def)
-//{
-//	std::vector<SPConf>::iterator pos;
-//	for (pos = m_ConfigItemList.begin(); pos != m_ConfigItemList.end(); ++pos)
-//	{
-//		if (strcasecmp((*pos)->itemName, p_itemname) == 0)
-//			return atoi((*pos)->itemContent);
-//	}//end for
-//	return def;
-//}
+int CConfig::getIntDefault(const char* p_itemname, const int def)
+{
+	std::vector<SPConf>::iterator pos;
+	for (pos = m_ConfigItemList.begin(); pos != m_ConfigItemList.end(); ++pos)
+	{
+		if (strcasecmp((*pos)->itemName, p_itemname) == 0)
+			return atoi((*pos)->itemContent);
+	}//end for
+	return def;
+}
