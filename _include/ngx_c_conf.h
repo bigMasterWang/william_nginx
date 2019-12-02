@@ -2,7 +2,10 @@
 #define __NGX__C__CONF__H__
 
 #include <vector>
+#include <mutex>
 #include "ngx_global.h"
+
+
 
 /*
 这是一个单例类，用来读取配置文件的信息
@@ -16,13 +19,19 @@ public:
 private:
 	static CConfig* m_instance;
 public:
+	static std::mutex myMutex;
+
 	//得到单例的方法
 	static CConfig* getInstance()
 	{
 		if (m_instance == NULL)
 		{
-			m_instance = new CConfig();
-			static CInnerToReleaseConfig releaseClass;
+			std::unique_lock<std::mutex>myUniqueLock(CConfig::myMutex);
+			if (m_instance == NULL)
+			{
+				m_instance = new CConfig();
+				static CInnerToReleaseConfig releaseClass;
+			}
 		}
 		return m_instance;
 	}
@@ -48,7 +57,6 @@ public:
 public:
 	//配置信息存储列表
 	std::vector<SPConf> m_ConfigItemList;
-	std::vector<int> m_IntItem;
 };
 
 

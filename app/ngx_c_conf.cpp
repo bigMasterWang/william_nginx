@@ -10,7 +10,7 @@
 
 //静态成员赋值
 CConfig* CConfig::m_instance = NULL;
-
+std::mutex CConfig::myMutex;
 //构造函数
 CConfig::CConfig()
 {

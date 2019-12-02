@@ -13,7 +13,6 @@ void Rtrim(char* string)
 }
 void Ltrim(char* string)
 {
-	size_t len = 0;
 	char* p_temp = string;
 	//不以空格开头
 	if ((*p_temp) != ' ')

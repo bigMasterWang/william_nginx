@@ -1,8 +1,10 @@
 ifeq ($(DEBUG),true)
-CC = g++ -g
+#CC = g++11 -g
+CC = g++ -std=c++11
 VERSION = debug
 else
-CC = g++
+#CC = g++11
+CC = g++ -std=c++11
 VERSION = release
 endif
 
@@ -41,4 +43,4 @@ $(LINK_OBJ_DIR)/%.o:%.cpp
 
 $(DEP_DIR)/%.d:%.cpp
 	echo -n $(LINK_OBJ_DIR)/ > $@
-	gcc -I$(INCLUDE_ROOT) -MM $^ >> $@
+	$(CC) -I$(INCLUDE_ROOT) -MM $^ >> $@
