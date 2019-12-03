@@ -82,7 +82,7 @@ bool CConfig::Load(const char* pconfName)
 			Rtrim(p_confitem->itemContent);
 			Ltrim(p_confitem->itemContent);
 
-			printf("itemname=%s | itemcontent=%s\n", p_confitem->itemName, p_confitem->itemContent);
+			//printf("itemname=%s | itemcontent=%s\n", p_confitem->itemName, p_confitem->itemContent);
 			
 			this->m_ConfigItemList.push_back(p_confitem);  //内存要释放，因为这里是new出来的 
 		} //end if
